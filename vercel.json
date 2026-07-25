@@ -1,14 +1,20 @@
 {
+  "rewrites": [
+    {
+      "source": "/((?!assets/|_vercel/|Madhav\\.jpg|My_Icon\\.png|Bewakoof_Logo\\.svg|Calculator\\.png|Dashboard\\.png|Madhav_Resume\\.pdf|Sugar_Black_Logo\\.png|Sugar_Logo\\.jpeg|Sugar_white_logo\\.png|User_Image\\.png|robots\\.txt|sitemap\\.xml).*)",
+      "destination": "/index.html"
+    }
+  ],
   "redirects": [
     {
       "source": "/(.*)",
       "has": [
         {
           "type": "host",
-          "value": "www.my-portfolio-tau-five-61.vercel.app"
+          "value": "www.my-portfolio-tau-five-61-sable.vercel.app"
         }
       ],
-      "destination": "https://my-portfolio-tau-five-61.vercel.app/$1",
+      "destination": "https://my-portfolio-tau-five-61-sable.vercel.app/$1",
       "permanent": true
     }
   ],
