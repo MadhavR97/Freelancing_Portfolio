@@ -11,10 +11,10 @@
       "has": [
         {
           "type": "host",
-          "value": "www.my-portfolio-tau-five-61-sable.vercel.app"
+          "value": "www.freelancing-portfolio-flax-seven.vercel.app"
         }
       ],
-      "destination": "https://my-portfolio-tau-five-61-sable.vercel.app/$1",
+      "destination": "https://freelancing-portfolio-flax-seven.vercel.app/$1",
       "permanent": true
     }
   ],

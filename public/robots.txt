@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://my-portfolio-tau-five-61-sable.vercel.app/sitemap.xml
+Sitemap: https://freelancing-portfolio-flax-seven.vercel.app/sitemap.xml
