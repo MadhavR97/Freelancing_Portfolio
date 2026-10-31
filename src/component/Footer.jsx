@@ -1,10 +1,6 @@
 import React from 'react';
 
 function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <footer className="relative border-t border-zinc-800/50">
       <div className="section-container py-12 md:py-14 flex flex-col md:flex-row items-center justify-between gap-6">

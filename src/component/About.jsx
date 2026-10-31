@@ -2,8 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const stats = [
-  { value: '2+', label: 'Years Experience' },
-  { value: '10+', label: 'Projects Built' },
+  { value: '4+', label: 'Projects Built' },
+  { value: '1+', label: 'Years Experience' },
   { value: '5+', label: 'Technologies' },
   { value: '100%', label: 'Commitment' },
 ];
@@ -54,23 +54,15 @@ function About() {
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-10">
             <motion.div variants={itemVariants} className="lg:col-span-3">
-              <div className="glass rounded-2xl p-8 md:p-10 h-full">
-                <div className="space-y-5">
-                  <p className="text-zinc-400 leading-relaxed">
-                    I have acquired a comprehensive understanding of Full Stack Development, encompassing both front-end and back-end technologies. On the front-end, I have gained proficiency in HTML, CSS, JavaScript, and modern frameworks such as React, enabling me to create responsive, user-centric web interfaces.
-                  </p>
-                  <p className="text-zinc-400 leading-relaxed">
-                    On the back-end, I have developed strong skills in server-side technologies such as Node.js with Express.js, and worked with databases like MongoDB to ensure efficient data management and integration. I also have experience with RESTful APIs, GitHub for version control and collaboration, and cloud deployment platforms such as Render or Vercel.
-                  </p>
-                  <p className="text-zinc-400 leading-relaxed">
-                    A strong willingness to keep learning and a collaborative attitude focused on creating effective and improved solutions for real-world challenges.
-                  </p>
-                </div>
+              <div className="glass rounded-2xl p-8 md:p-10 h-full flex flex-col">
+                <p className="text-zinc-400 leading-relaxed">
+                  I am a Full-Stack Developer specializing in the MERN stack. I help businesses build fast, responsive, and scalable web applications. I care about clean code, performance, and accessible experiences that turn ideas into reliable products.
+                </p>
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  className="mt-8"
+                  className="mt-auto pt-8"
                 >
                   <a
                     href="/Madhav_Resume.pdf"

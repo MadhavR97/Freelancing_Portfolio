@@ -58,7 +58,7 @@ function Luxe() {
 					<div className='md:col-span-7'>
 						<p className='text-sm text-gray-400'>Portfolio — 2025</p>
 						<h1 className='mt-3 text-4xl md:text-6xl font-extrabold tracking-tight'>Building fast, accessible products with a craftsman mindset.</h1>
-						<p className='mt-4 text-gray-400 max-w-2xl'>I design and develop robust web apps using React, Node.js, and pragmatic tooling, with an emphasis on performance and delightful UX.</p>
+						<p className='mt-4 text-gray-400 max-w-2xl'>I craft robust, scalable web applications with modern stacks — obsessed with performance, accessibility, and pixel-perfect experiences.</p>
 						<div className='mt-6 flex gap-3'>
 							<a href='#projects' className='px-4 py-2 text-sm font-semibold rounded-md bg-[#14b8a6] hover:bg-[#119c8d] focus:ring-4 focus:ring-[#14b8a6]/30 text-white'>View Projects</a>
 							<a href='mailto:madhavrathod019@gmail.com' className='px-4 py-2 text-sm font-semibold rounded-md border border-white/10 hover:border-white/20'>Contact</a>

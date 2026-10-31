@@ -1,77 +1,66 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import bewakoof from '/Bewakoof_Logo.svg';
-import sugar from '/Sugar_white_logo.png';
-import dashboard from '/Dashboard.png';
-import calculator from '/Calculator.png';
+import bewakoofShot from '../assets/projects/bewakoof-clone.jpg';
+import sugarShot from '../assets/projects/sugar-cosmetics-clone.jpg';
+import adminShot from '../assets/projects/admin-panel.jpg';
+import calculatorShot from '../assets/projects/calculator.jpg';
 
 const projects = [
   {
-    logo: bewakoof,
     title: 'Bewakoof Clone',
-    desc: ['Built with React and Tailwind with auth: login, signup, logout.', 'Responsive UI, search, product list with filters, and single product page.', 'Wishlist and cart features for a complete flow.'],
-    link: 'https://bewakoof-website-seven.vercel.app/',
+    category: 'E-commerce storefront',
+    image: bewakoofShot,
+    imageAlt: 'Screenshot of the Bewakoof Clone e-commerce homepage',
+    problem: 'Recreating a large fashion catalogue required product discovery, wishlist, and cart flows to feel seamless across every screen.',
+    solution: 'Built a fully responsive React + Tailwind e-commerce UI with search and filters, product pages, complex wishlist/cart state, and secure authentication.',
+    liveUrl: 'https://bewakoof-website-seven.vercel.app/',
+    repoUrl: 'https://github.com/MadhavR97/Bewakoof_website',
+    tags: ['React', 'Tailwind', 'Auth'],
     gradient: 'from-indigo-600 to-blue-600',
-    tags: ['React', 'Tailwind', 'Auth'],
+    accent: 'text-indigo-400',
   },
   {
-    logo: sugar,
     title: 'Sugar Cosmetics Clone',
-    desc: ['React + Tailwind with full auth including account deletion.', 'Search, advanced filters, single product with color variants.', 'Wishlist and cart for seamless shopping.'],
-    link: 'https://sugar-cosmetics-website.vercel.app/',
-    gradient: 'from-purple-600 to-pink-600',
+    category: 'Beauty e-commerce',
+    image: sugarShot,
+    imageAlt: 'Screenshot of the Sugar Cosmetics Clone homepage',
+    problem: 'Beauty shoppers needed a fast way to explore products, compare variants, and save products without friction.',
+    solution: 'Delivered a responsive React + Tailwind storefront with search, advanced filters, variant selection, wishlist/cart, and full auth including account deletion.',
+    liveUrl: 'https://sugar-cosmetics-website.vercel.app/',
+    repoUrl: 'https://github.com/MadhavR97/Sugar_Cosmetics_Website',
     tags: ['React', 'Tailwind', 'Auth'],
+    gradient: 'from-purple-600 to-pink-600',
+    accent: 'text-purple-400',
   },
   {
-    logo: dashboard,
     title: 'Admin Panel Dashboard',
-    desc: ['Frontend in React/Tailwind with backend using MongoDB Atlas.', 'JWT-secured auth, profile dashboard, and task management (CRUD).'],
-    link: 'https://admin-panel-frontend-iota-nine.vercel.app/',
+    category: 'Full-stack admin tool',
+    image: adminShot,
+    // Placeholder: replace admin-panel.jpg with the dashboard screenshot when it is ready.
+    imageAlt: 'Screenshot of the Admin Panel interface',
+    problem: 'Task management needed a secure, central place to sign in, view a profile, and manage records without exposing data.',
+    solution: 'Created a JWT-secured React admin dashboard with protected routes, profile access, and CRUD task management backed by Express and MongoDB Atlas.',
+    liveUrl: 'https://admin-panel-frontend-iota-nine.vercel.app/',
+    repoUrl: 'https://github.com/MadhavR97/Admin_Panel_Frontend',
+    backendUrl: 'https://github.com/MadhavR97/Admin_Panel_Backend',
+    tags: ['React', 'Express', 'MongoDB'],
     gradient: 'from-emerald-600 to-teal-600',
-    tags: ['React', 'MongoDB', 'JWT'],
+    accent: 'text-emerald-400',
   },
   {
-    logo: calculator,
     title: 'Calculator App',
-    desc: ['HTML/CSS/JS calculator with clean UI and previous value memory.'],
-    link: 'https://calculatorappbymadhav.netlify.app/',
+    category: 'Vanilla JS utility',
+    image: calculatorShot,
+    imageAlt: 'Screenshot of the Calculator app interface',
+    problem: 'A simple calculator still needs dependable chained operations and an easy way to correct input without a cluttered interface.',
+    solution: 'Built a lightweight HTML, CSS, and JavaScript calculator with previous-value memory, clear/backspace controls, and a clean responsive layout.',
+    liveUrl: 'https://calculatorappbymadhav.netlify.app/',
+    repoUrl: 'https://github.com/MadhavR97/Java_Script/tree/main/Calculator',
+    tags: ['HTML', 'CSS', 'JavaScript'],
     gradient: 'from-amber-600 to-orange-600',
-    tags: ['HTML', 'CSS', 'JS'],
+    accent: 'text-amber-400',
   },
 ];
-
-function TiltCard({ children, className }) {
-  const ref = useRef(null);
-
-  const handleMouseMove = (e) => {
-    const card = ref.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 8;
-    const rotateY = (centerX - x) / 8;
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-  };
-
-  const handleMouseLeave = () => {
-    if (ref.current) ref.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-  };
-
-  return (
-    <div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className={className}
-      style={{ transition: 'transform 0.2s ease-out', transformStyle: 'preserve-3d' }}
-    >
-      {children}
-    </div>
-  );
-}
 
 function Project() {
   return (
@@ -91,58 +80,107 @@ function Project() {
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0 }
             }}
-            className="flex items-center gap-3 mb-10"
+            className="flex items-end justify-between gap-4 mb-10"
           >
-            <span className="inline-block w-1 h-8 rounded-full bg-gradient-to-b from-indigo-500 to-purple-500" />
-            <span className="text-white text-lg md:text-xl font-extrabold tracking-wide">PROJECTS</span>
+            <div className="flex items-center gap-3">
+              <span className="inline-block w-1 h-8 rounded-full bg-gradient-to-b from-indigo-500 to-purple-500" />
+              <span className="text-white text-lg md:text-xl font-extrabold tracking-wide">PROJECTS</span>
+            </div>
+            <p className="hidden sm:block text-[11px] uppercase tracking-[0.2em] text-zinc-500">
+              Selected work · {String(projects.length).padStart(2, '0')} projects
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {projects.map((p, idx) => (
-              <motion.div
-                key={idx}
+            {projects.map((project, index) => (
+              <motion.article
+                key={project.title}
                 variants={{
                   hidden: { opacity: 0, y: 40 },
                   visible: { opacity: 1, y: 0 }
                 }}
+                className="group glass rounded-2xl overflow-hidden h-full flex flex-col transition-colors duration-300 hover:border-zinc-700/80"
               >
-                <TiltCard className="glass rounded-2xl overflow-hidden group h-full">
-                  <div className="p-6 md:p-8 flex flex-col h-full">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="w-14 h-14 rounded-xl bg-black/40 flex items-center justify-center p-2">
-                        <img src={p.logo} alt={p.title} className="w-10 h-10 object-contain" />
-                      </div>
-                      <div className="flex gap-2">
-                        {p.tags.map((tag, i) => (
-                          <span key={i} className="text-[10px] px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-400 font-medium">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
+                <div className={`relative aspect-[16/10] overflow-hidden bg-gradient-to-br ${project.gradient}`}>
+                  <img
+                    src={project.image}
+                    alt={project.imageAlt}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#050505]/65 via-transparent to-transparent" />
+                  <span className="absolute left-4 top-4 inline-flex h-7 min-w-7 items-center justify-center rounded-full border border-white/15 bg-black/30 px-2 text-[10px] font-semibold tracking-widest text-white/90 backdrop-blur-sm">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+
+                <div className="flex flex-1 flex-col p-6 md:p-7">
+                  <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500">{project.category}</p>
+                      <h3 className="mt-1 text-lg md:text-xl font-bold tracking-wide text-white">{project.title}</h3>
                     </div>
-                    <h3 className="text-white font-bold text-lg md:text-xl tracking-wide">{p.title}</h3>
-                    <ul className="mt-3 space-y-1.5 flex-1">
-                      {p.desc.map((d, i) => (
-                        <li key={i} className="text-zinc-400 text-sm leading-relaxed flex gap-2">
-                          <span className={`inline-block w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 bg-gradient-to-r ${p.gradient}`} />
-                          {d}
-                        </li>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-zinc-700/60 bg-zinc-800/70 px-2 py-0.5 text-[10px] font-medium text-zinc-400"
+                        >
+                          {tag}
+                        </span>
                       ))}
-                    </ul>
-                    <div className="mt-5 pt-4 border-t border-zinc-800/50">
-                      <a
-                        href={p.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r ${p.gradient} text-white text-sm font-semibold hover:shadow-lg transition-shadow duration-300`}
-                      >
-                        Visit Project
-                        <i className="fa-solid fa-arrow-up-right-from-square text-[10px]" />
-                      </a>
                     </div>
                   </div>
-                </TiltCard>
-              </motion.div>
+
+                  <div className="mt-4 flex-1 space-y-3">
+                    <div>
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-500">Problem</p>
+                      <p className="mt-1 text-sm leading-relaxed text-zinc-400">{project.problem}</p>
+                    </div>
+                    <div>
+                      <p className={`text-[10px] font-semibold uppercase tracking-[0.18em] ${project.accent}`}>Solution</p>
+                      <p className="mt-1 text-sm leading-relaxed text-zinc-400">{project.solution}</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-5 border-t border-zinc-800/60 pt-5">
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit the live ${project.title} project`}
+                        className={`inline-flex items-center gap-2 rounded-full bg-gradient-to-r ${project.gradient} px-4 py-2 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]`}
+                      >
+                        Visit Project
+                        <i className="fa-solid fa-arrow-up-right-from-square text-[10px]" aria-hidden="true" />
+                      </a>
+                      <a
+                        href={project.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Open the GitHub repository for ${project.title}`}
+                        className="inline-flex items-center gap-2 rounded-full border border-zinc-700/80 px-4 py-2 text-sm font-semibold text-zinc-300 transition-colors duration-200 hover:border-zinc-500 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]"
+                      >
+                        <i className="fa-brands fa-github text-sm" aria-hidden="true" />
+                        GitHub Repo
+                      </a>
+                    </div>
+                    {project.backendUrl && (
+                      <a
+                        href={project.backendUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-zinc-500 transition-colors duration-200 hover:text-zinc-300 focus-visible:outline-none focus-visible:text-zinc-200"
+                      >
+                        Backend repo
+                        <i className="fa-solid fa-arrow-up-right-from-square text-[9px]" aria-hidden="true" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </motion.article>
             ))}
           </div>
         </motion.div>

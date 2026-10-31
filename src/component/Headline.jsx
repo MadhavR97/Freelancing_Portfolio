@@ -1,33 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
+
+const ROLES = ['Full-Stack Developer', 'React Developer', 'Node.js Developer', 'UI Enthusiast'];
+const TYPE_SPEED_MS = 80;
+const DELETE_SPEED_MS = 45;
+const HOLD_MS = 2200;
 
 const Headline = () => {
-  const roles = ["Full-Stack Developer", "React Developer", "Node.js Developer", "UI Enthusiast"];
-  const [displayText, setDisplayText] = useState('');
+  const prefersReducedMotion = useReducedMotion();
+  const [displayText, setDisplayText] = useState(ROLES[0]);
   const [roleIndex, setRoleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const typeSpeedMs = 80;
-  const deleteSpeedMs = 50;
-  const pauseAfterTypeMs = 1500;
-
   useEffect(() => {
-    const fullText = roles[roleIndex];
+    if (prefersReducedMotion) return;
+
+    const fullText = ROLES[roleIndex];
     let timeoutId;
 
     if (!isDeleting && displayText !== fullText) {
-      timeoutId = setTimeout(() => setDisplayText(fullText.slice(0, displayText.length + 1)), typeSpeedMs);
+      timeoutId = setTimeout(() => setDisplayText(fullText.slice(0, displayText.length + 1)), TYPE_SPEED_MS);
     } else if (!isDeleting && displayText === fullText) {
-      timeoutId = setTimeout(() => setIsDeleting(true), pauseAfterTypeMs);
+      timeoutId = setTimeout(() => setIsDeleting(true), HOLD_MS);
     } else if (isDeleting && displayText.length > 0) {
-      timeoutId = setTimeout(() => setDisplayText(fullText.slice(0, displayText.length - 1)), deleteSpeedMs);
+      timeoutId = setTimeout(() => setDisplayText(fullText.slice(0, displayText.length - 1)), DELETE_SPEED_MS);
     } else if (isDeleting && displayText.length === 0) {
-      setIsDeleting(false);
-      setRoleIndex((prev) => (prev + 1) % roles.length);
+      timeoutId = setTimeout(() => {
+        setIsDeleting(false);
+        setRoleIndex((prev) => (prev + 1) % ROLES.length);
+      }, 250);
     }
 
     return () => clearTimeout(timeoutId);
-  }, [displayText, isDeleting, roleIndex]);
+  }, [displayText, isDeleting, roleIndex, prefersReducedMotion]);
+
+  const visibleText = prefersReducedMotion ? ROLES[0] : displayText;
 
   return (
     <motion.div
@@ -48,12 +55,18 @@ const Headline = () => {
         Madhav{' '}
         <span className="gradient-text">Rathod</span>
       </h1>
-      <div className="mt-3 h-10 md:h-12">
-        <span className="text-xl md:text-2xl text-zinc-400 font-medium">
-          {displayText}
+
+      <div className="mt-3 flex min-h-[2.5rem] items-center md:min-h-[3rem]">
+        <span className="sr-only">Full-Stack Developer</span>
+        <span
+          aria-hidden="true"
+          className="flex items-center whitespace-nowrap text-lg font-medium text-zinc-400 sm:text-xl md:text-2xl"
+        >
+          {visibleText}
+          <span className="ml-0.5 inline-block h-6 w-[2px] animate-pulse bg-indigo-500 align-middle md:h-7" />
         </span>
-        <span className="ml-0.5 inline-block w-[2px] h-6 md:h-7 bg-indigo-500 animate-pulse align-middle" />
       </div>
+
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -70,7 +83,7 @@ const Headline = () => {
       >
         <a
           href="/Madhav_Resume.pdf"
-          className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-sm overflow-hidden"
+          className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold text-sm overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]"
         >
           <span className="relative z-10">View Resume</span>
           <i className="fa-solid fa-arrow-down relative z-10 group-hover:translate-y-1 transition-transform duration-200" />
@@ -78,7 +91,7 @@ const Headline = () => {
         </a>
         <a
           href="#contact"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-zinc-800 text-zinc-300 font-semibold text-sm hover:border-zinc-600 hover:text-white transition-all duration-300"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-zinc-800 text-zinc-300 font-semibold text-sm hover:border-zinc-600 hover:text-white transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]"
         >
           Get in Touch
           <i className="fa-solid fa-arrow-right" />

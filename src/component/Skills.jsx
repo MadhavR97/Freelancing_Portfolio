@@ -1,66 +1,32 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 const skills = [
-  { icon: "devicon-html5-plain-wordmark", name: "HTML5" },
-  { icon: "devicon-css3-plain-wordmark", name: "CSS3" },
-  { icon: "devicon-bootstrap-plain-wordmark", name: "Bootstrap" },
-  { icon: "devicon-tailwindcss-plain-wordmark", name: "Tailwind CSS" },
-  { icon: "devicon-javascript-plain", name: "JavaScript" },
-  { icon: "devicon-jquery-plain-wordmark", name: "jQuery" },
-  { icon: "devicon-react-original-wordmark", name: "React" },
-  { icon: "devicon-reactrouter-plain-wordmark", name: "React Router" },
-  { icon: "devicon-redux-original", name: "Redux" },
-  { icon: "devicon-nodejs-plain-wordmark", name: "Node.js" },
-  { icon: "devicon-express-original-wordmark", name: "Express" },
-  { icon: "devicon-mongodb-plain-wordmark", name: "MongoDB" },
-  { icon: "devicon-mongoose-original-wordmark", name: "Mongoose" },
-  { icon: "devicon-firebase-plain-wordmark", name: "Firebase" },
-  { icon: "devicon-vitejs-plain", name: "Vite" },
-  { icon: "devicon-vscode-plain-wordmark", name: "VS Code" },
-  { icon: "devicon-github-original", name: "GitHub" },
-  { icon: "devicon-postman-plain-wordmark", name: "Postman" },
-  { icon: "devicon-netlify-plain-wordmark", name: "Netlify" },
-  { icon: "devicon-vercel-original-wordmark", name: "Vercel" },
-  { icon: "devicon-sass-original", name: "Sass" },
-  { icon: "devicon-materialui-plain", name: "Material UI" },
-  { icon: "devicon-c-plain-wordmark", name: "C" },
-  { icon: "devicon-npm-original-wordmark", name: "npm" },
-  { icon: "devicon-json-plain", name: "JSON" },
+  { icon: 'devicon-html5-plain', name: 'HTML5' },
+  { icon: 'devicon-css3-plain', name: 'CSS3' },
+  { icon: 'devicon-bootstrap-plain', name: 'Bootstrap' },
+  { icon: 'devicon-tailwindcss-plain', name: 'Tailwind CSS' },
+  { icon: 'devicon-javascript-plain', name: 'JavaScript' },
+  { icon: 'devicon-jquery-plain', name: 'jQuery' },
+  { icon: 'devicon-react-original', name: 'React' },
+  { icon: 'devicon-reactrouter-plain', name: 'React Router' },
+  { icon: 'devicon-redux-original', name: 'Redux' },
+  { icon: 'devicon-nodejs-plain', name: 'Node.js' },
+  { icon: 'devicon-express-original', name: 'Express' },
+  { icon: 'devicon-mongodb-plain', name: 'MongoDB' },
+  { icon: 'devicon-mongoose-original', name: 'Mongoose' },
+  { icon: 'devicon-firebase-plain', name: 'Firebase' },
+  { icon: 'devicon-vitejs-plain', name: 'Vite' },
+  { icon: 'devicon-vscode-plain', name: 'VS Code' },
+  { icon: 'devicon-github-original', name: 'GitHub' },
+  { icon: 'devicon-postman-plain', name: 'Postman' },
+  { icon: 'devicon-netlify-plain', name: 'Netlify' },
+  { icon: 'devicon-vercel-original', name: 'Vercel' },
+  { icon: 'devicon-sass-original', name: 'Sass' },
+  { icon: 'devicon-materialui-plain', name: 'Material UI' },
+  { icon: 'devicon-c-plain', name: 'C' },
+  { icon: 'devicon-npm-original', name: 'npm' },
 ];
-
-function TiltCard({ children, className }) {
-  const ref = useRef(null);
-
-  const handleMouseMove = (e) => {
-    const card = ref.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = (y - centerY) / 10;
-    const rotateY = (centerX - x) / 10;
-    card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-  };
-
-  const handleMouseLeave = () => {
-    if (ref.current) ref.current.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-  };
-
-  return (
-    <div
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className={className}
-      style={{ transition: 'transform 0.2s ease-out', transformStyle: 'preserve-3d' }}
-    >
-      {children}
-    </div>
-  );
-}
 
 function Skills() {
   return (
@@ -86,19 +52,26 @@ function Skills() {
             <span className="text-white text-lg md:text-xl font-extrabold tracking-wide">SKILLS</span>
           </motion.div>
 
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
-            {skills.map((skill, index) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
+            {skills.map((skill) => (
               <motion.div
-                key={index}
+                key={skill.name}
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0 }
                 }}
               >
-                <TiltCard className="glass rounded-xl p-5 flex flex-col items-center justify-center gap-2.5 h-28 md:h-32 cursor-default">
-                  <i className={`${skill.icon} text-3xl md:text-4xl text-zinc-400`} />
-                  <span className="text-[10px] text-zinc-600 font-medium text-center leading-tight">{skill.name}</span>
-                </TiltCard>
+                <div className="group glass rounded-xl p-4 flex flex-col items-center justify-center gap-2.5 h-28 md:h-32 cursor-default transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-500/30 hover:bg-white/[0.04]">
+                  <span className="flex h-10 items-center justify-center">
+                    <i
+                      className={`${skill.icon} text-3xl md:text-4xl text-zinc-400 transition-colors duration-300 group-hover:text-zinc-200`}
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <span className="text-[11px] sm:text-xs text-zinc-400 font-medium text-center leading-tight transition-colors duration-300 group-hover:text-zinc-300">
+                    {skill.name}
+                  </span>
+                </div>
               </motion.div>
             ))}
           </div>
