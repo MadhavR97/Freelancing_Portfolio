@@ -25,7 +25,7 @@ const skills = [
   { icon: 'devicon-sass-original', name: 'Sass' },
   { icon: 'devicon-materialui-plain', name: 'Material UI' },
   { icon: 'devicon-c-plain', name: 'C' },
-  { icon: 'devicon-npm-original', name: 'npm' },
+  { icon: 'devicon-npm-plain', name: 'npm' },
 ];
 
 function Skills() {
