@@ -36,8 +36,7 @@ const projects = [
     title: 'Admin Panel Dashboard',
     category: 'Full-stack admin tool',
     image: adminShot,
-    // Placeholder: replace admin-panel.jpg with the dashboard screenshot when it is ready.
-    imageAlt: 'Screenshot of the Admin Panel interface',
+    imageAlt: 'Screenshot of the Admin Panel Dashboard interface',
     problem: 'Task management needed a secure, central place to sign in, view a profile, and manage records without exposing data.',
     solution: 'Created a JWT-secured React admin dashboard with protected routes, profile access, and CRUD task management backed by Express and MongoDB Atlas.',
     liveUrl: 'https://admin-panel-frontend-iota-nine.vercel.app/',
